@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st Project - CodeAlpha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <input type="radio" name="Photos" id="check1" checked> 
+    <input type="radio" name="Photos" id="check2">
+    <input type="radio" name="Photos" id="check3">
+    <input type="radio" name="Photos" id="check4">
+    <input type="radio" name="Photos" id="check5">
+
+    <div class="container">
+        <h1>IMAGE GALLERY</h1>
+        <div class="top-content">
+            <h3>Photo Gallery</h3>
+            <label for="check1" class="selected" onclick="changeStyle(this)">All Photos</label>
+            <label for="check2" onclick="changeStyle(this)">Nature</label>
+            <label for="check3" onclick="changeStyle(this)">Friends</label>
+            <label for="check4" onclick="changeStyle(this)">Festivals</label>
+            <label for="check5" onclick="changeStyle(this)">School Days</label>
+        </div>
+
+        <div class="photo-gallery">
+            <div class="pic nature">
+                <img src="Images/Nature/nature1.jpg">
+            </div>
+
+            <div class="pic friends">
+                <img src="Images/Friends/friends1.jpg">
+            </div>
+
+            <div class="pic festivals">
+                <img src="Images/Festivals/festival1.jpg">
+            </div>
+
+            <div class="pic school">
+                <img src="Images/School/school1.jpg">
+            </div>
+
+            <div class="pic nature">
+                <img src="Images/Nature/nature2.jpg">
+            </div>
+
+            <div class="pic friends">
+                <img src="Images/Friends/friends2.jpg">
+            </div>
+
+            <div class="pic festivals">
+                <img src="Images/Festivals/festival2.jpg">
+            </div>
+
+            <div class="pic school">
+                <img src="Images/School/school2.jpg">
+            </div>
+
+            <div class="pic nature">
+                <img src="Images/Nature/nature3.jpg">
+            </div>
+
+            <div class="pic friends">
+                <img src="Images/Friends/friends3.jpg">
+            </div>
+
+            <div class="pic festivals">
+                <img src="Images/Festivals/festival3.jpg">
+            </div>
+
+            <div class="pic school">
+                <img src="Images/School/school3.jpg">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeStyle(label) {
+            var labels = document.querySelectorAll('.top-content label');
+            labels.forEach(function(el) {
+                el.classList.remove('selected');
+            });
+            label.classList.add('selected');
+        }
+    </script>
+
+</body>
+</html>

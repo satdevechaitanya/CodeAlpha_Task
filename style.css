@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f4f0ff, #e0e7ff);
+    color: #2d2d2d;
+}
+
+input {
+    display: none;
+}
+
+.container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 40px;
+    position: relative;
+    margin: 40px 0;
+    color: #0c0611;
+}
+
+h1::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #eeabab, #eeabab);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: animateLine 3s ease-in-out infinite;
+}
+
+@keyframes animateLine {
+    0% { width: 100px; }
+    50% { width: 200px; }
+    100% { width: 100px; }
+}
+
+.top-content {
+    background: #eeabab;
+    width: 90%;
+    margin: 0 auto 20px auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    height: 100%;
+    background: linear-gradient(90deg, #eeabab, #eeabab);
+    line-height: 60px;
+    padding: 0 50px;
+    color: rgb(0, 0, 0);
+    text-shadow: 0 2px 4px rgb(225, 209, 209);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+label {
+    display: inline-block;
+    height: 100%;
+    margin: 0 15px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+label:hover {
+    color: #2575fc;
+    transform: scale(1.05);
+}
+
+.selected {
+    color: #ff0080;
+    font-weight: bold;
+}
+
+.photo-gallery {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.pic {
+    position: relative;
+    height: 230px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.pic:hover {
+    transform: scale(1.05);
+}
+
+.pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: 0.5s ease;
+}
+
+.pic::before {
+    content: "MY PHOTOS";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #eeabab;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.4s, transform 0.4s;
+    z-index: 2;
+    text-shadow: 0 2px 5px #000;
+}
+
+.pic::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    transition: height 0.4s ease;
+    z-index: 1;
+}
+
+.pic:hover::after {
+    height: 100%;
+}
+
+.pic:hover::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Radio-based filtering logic */
+
+/* All Photos */
+#check1:checked ~ .container .photo-gallery .pic {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+    transition: 0.5s;
+}
+
+/* Check2 - Nature */
+#check2:checked ~ .container .photo-gallery .nature {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
+
+#check2:checked ~ .container .photo-gallery .friends,
+#check2:checked ~ .container .photo-gallery .festivals,
+#check2:checked ~ .container .photo-gallery .school {
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0.5s;
+}
+
+/* Check3 - Friends */
+#check3:checked ~ .container .photo-gallery .friends {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
+
+#check3:checked ~ .container .photo-gallery .nature,
+#check3:checked ~ .container .photo-gallery .festivals,
+#check3:checked ~ .container .photo-gallery .school {
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0.5s;
+}
+
+/* Check4 - Festivals */
+#check4:checked ~ .container .photo-gallery .festivals {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
+
+#check4:checked ~ .container .photo-gallery .nature,
+#check4:checked ~ .container .photo-gallery .friends,
+#check4:checked ~ .container .photo-gallery .school {
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0.5s;
+}
+
+/* Check5 - School Days */
+#check5:checked ~ .container .photo-gallery .school {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
+
+#check5:checked ~ .container .photo-gallery .nature,
+#check5:checked ~ .container .photo-gallery .friends,
+#check5:checked ~ .container .photo-gallery .festivals {
+    opacity: 0;
+    transform: scale(0);
+    position: absolute;
+    transition: 0.5s;
+}
